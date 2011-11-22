@@ -1,0 +1,22 @@
+.lf_toggle_icon
+{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+	position: relative;
+	top:1px;
+	left: 1px;
+}
+.lf_active
+{
+	background: url('collapse16.png');
+	cursor: pointer;
+}
+.lf_default
+{
+	background: url('expand16.png');
+	cursor: pointer;
+}
+.lf_slide{ display: none; }
+.lf_subRow{ display: none; }
