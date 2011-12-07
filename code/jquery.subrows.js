@@ -41,8 +41,10 @@ THE SOFTWARE.
 			 rowsChecked: false
 			,CheckRows: function(table, settings){
 				table.children("tr").map(function(){
-					if($(this).hasClass(parentClass) == false && $(this).prev("tr").hasClass(parentClass) == false)
-						$(this).find("td:first").prepend('<span class="' + settings.iconClass + ' ' + settings.emptyClass + '"></span>');
+					if($(this).hasClass(parentClass) == false && $(this).prev("tr").hasClass(parentClass) == false){
+						if($(this).find("td:first").find(methods.jQueryClass(settings.emptyClass)).length == 0)
+							$(this).find("td:first").prepend('<span class="' + settings.iconClass + ' ' + settings.emptyClass + '"></span>');
+					}
 				});
 				methods.rowsChecked = true;
 			}
@@ -53,6 +55,9 @@ THE SOFTWARE.
 		
 		
 		this.addClass(parentClass);
+		var empty = this.find(methods.jQueryClass(settings.emptyClass));
+		empty.remove();
+		
         return this.each(function () {
             var defaults = settings;
             if (options)
