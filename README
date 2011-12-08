@@ -23,8 +23,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-TODO:
-	- Documentation on usage
-	- create/upload demo
-	- thorough, thorough testing
-	    -- first testing shows it working in Chrome, IE8, IE9, and Opera
+Plugin has been tested in Chrome, FF, IE8, IE9, and Opera.
+Currently, there are only issues when IE is in "Quirks Mode", so don't use that :)
