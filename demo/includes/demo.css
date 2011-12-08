@@ -1,0 +1,90 @@
+body{
+	background-color:#974d17;
+	background-image: url("../images/bg.png");
+	background-repeat: repeat-x;
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: 'Ubuntu', sans-serif;
+	color: #211005;
+}
+
+h1{ text-align: center; padding-top: 5px; }
+#demo_wrapper{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px 8px;
+	top: 0px;
+	background-color: #fff;
+	width: 750px;
+	min-height: 100%;
+	height: auto;
+}
+
+.rule{
+	width: 90%;
+	height: 1px;
+	background-color: #9d9d9d;
+	margin-left: 5%;
+}
+
+p{ 
+	font-size: 14px; 
+	text-align: center;
+}
+hr{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+	width: 80%;
+	color: #696969;
+	height: 1px;
+}
+
+.code_toggle{
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-left: 5%;
+}
+
+.code_toggle:hover{
+	text-decoration: none; 
+}
+
+#demo1_code, #demo2_code{ display: none; }
+
+code{
+	display: block;
+	border: 1px solid #969696;
+	padding: 5px;
+}
+
+table td{ padding: 2px; }
+#demo1, #demo2{ 
+	border-collapse: collapse;
+	border-color: #000;
+	width: 60%;
+	margin-left: 20%;
+}
+
+#demo1 table, #demo2 table{ width: 90%; }
+
+.item td{
+	vertical-align: baseline;
+}
+
+.lf_subRow table{ 
+	border-collapse: collapse; 
+	margin: 5px 5px 5px 15px;
+}
+
+.option{ 
+	text-align: left;
+	margin-left: 5%;
+}
+.param{
+	font-weight: bold;
+	text-decoration: underline;
+}

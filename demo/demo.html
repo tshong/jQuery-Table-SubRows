@@ -1,0 +1,281 @@
+<html>
+	<head>
+		<title>jQuery Table SubRow Demo</title>
+		
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="./includes/demo.css" />
+		<link rel="stylesheet" type="text/css" href="./includes/jquery.subrows.css" />
+		
+		
+		<script type="text/javascript" src="./libraries/jquery-1.7.min.js"></script>
+		<!--<script type="text/javascript" src="./libraries/jquery-ui-1.8.16.custom.min.js"></script>-->
+		<script type="text/javascript" src="./jquery.subrows.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#demo1 .item").SubRows();
+				
+				var speed = 200;
+				$("#demo2 .item").each(function(){
+					$(this).SubRows({speed: speed});
+					speed *= 3;
+				});
+			});
+			
+			function ToggleCode(elem, targetId){
+				targetId = "#" + targetId;
+				if($(targetId).css("display") == "none")
+					$(elem).html("Hide Code");
+				else
+					$(elem).html("Show Code");
+				$(targetId).slideToggle();
+			}
+		</script>
+	</head>
+<body>
+
+<div id="demo_wrapper">
+	<h1>jQuery Table SubRows</h1>
+	
+	<p>
+	  Let's face it, tables are a part of life, be it for tabular data or *gasp* design.  Okay, forget I mentioned that second part.
+	Regardless of what you use tables for, you may find yourself wanting to display subsets of data, which with tables can get 
+	to be clunky and often times an eyesore.  <br />
+	Enter SubRows.  <br />
+	SubRows will give you a lightweight javascript solution for displaying/hiding subsets of data.  It provides no styles of its 
+	own -- it's css is purely for functional purposes, leaving you, the designer, with the freedom to design and display your 
+	tables however you choose.  SubRows is also customizable to help you get the end result that you want.<br />
+	Enjoy!
+	</p>
+	<div class="rule"></div>
+
+	
+	<p>In its simplest form, SubRows needs one line of javascript, executed on the "parent" rows of your table.</p>
+	
+	<span class="code_toggle" onclick="ToggleCode(this, 'demo1_code');">Show Code</span><br />
+	<div id="demo1_code">
+		<code>
+			Javascript:<br /><br />
+			&lt;script type="text/javascript"&gt;<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;
+				 $("#demo1 .item").SubRows();<br />
+			&lt;/script&gt;
+		</code>
+		<br />
+		<code>
+			HTML:<br /><br />
+			&lt;table id="demo1" border="1" cellspacing="0" cellpadding="0"&gt;<br />
+			&nbsp;&nbsp;&lt;thead&gt;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Collections&lt;/th&gt;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />
+			&nbsp;&nbsp;&lt;/thead&gt;<br />
+			&nbsp;&nbsp;&lt;tbody&gt;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr class="item"&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Movies&lt;/td&gt;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;<br />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table border="1" cellspacing="0" cellpadding="0"&gt;<br />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Title&lt;/th&gt;<br />
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Format&lt;/th&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;<br />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Black Hawk Down&lt;/td&gt;&lt;td&gt;DVD&lt;/td&gt;&lt;/tr&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Independence Day&lt;/td&gt;&lt;td&gt;DVD&lt;/td&gt;&lt;/tr&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Inception&lt;/td&gt;&lt;td&gt;Blu Ray&lt;/td&gt;&lt;/tr&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Fight Club&lt;/td&gt;&lt;td&gt;DVD&lt;/td&gt;&lt;/tr&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Good Will Hunting&lt;/td&gt;&lt;td&gt;DVD&lt;/td&gt;&lt;/tr&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;The Departed&lt;/td&gt;&lt;td&gt;Blu Ray&lt;/td&gt;&lt;/tr&gt;<br />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Avatar&lt;/td&gt;&lt;td&gt;Blu Ray&lt;/td&gt;&lt;/tr&gt;<br />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;<br />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br />
+				&nbsp;&nbsp;&lt;/tr&gt;<br />
+				&nbsp;&nbsp;&lt;tr&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Music&lt;/td&gt;<br />
+				&nbsp;&nbsp;&lt;/tr&gt;<br />
+				&nbsp;&nbsp;...<br />
+				&lt;/table&gt;
+				
+		</code>
+	</div>
+	
+	<br />
+	<div style="text-align:center;">Inventory Sample:</div>
+	<table id="demo1" border="1" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th>Collections</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="item">
+				<td>Movies</td>
+			</tr>
+			<tr>
+				<td>
+					<table border="1" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Format</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Black Hawk Down</td><td>DVD</td></tr>
+							<tr><td>Independence Day</td><td>DVD</td></tr>
+							<tr><td>Inception</td><td>Blu Ray</td></tr>
+							<tr><td>Fight Club</td><td>DVD</td></tr>
+							<tr><td>Good Will Hunting</td><td>DVD</td></tr>
+							<tr><td>The Departed</td><td>Blu Ray</td></tr>
+							<tr><td>Avatar</td><td>Blu Ray</td></tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>Music</td>
+			</tr>		
+			<tr class="item">
+				<td>Books</td>
+			</tr>		
+			<tr>
+				<td>
+					<table border="1" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Format</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>1984</td><td>George Orwell</td><td>Hardcover</td></tr>
+							<tr><td>Lord of the Flies</td><td>William Golding</td><td>Paperback</td></tr>
+							<tr><td>To Kill a Mockingbird</td><td>Harper Lee</td><td>Paperback</td></tr>
+							<tr><td>Catcher in the Rye</td><td>J.D. Salinger</td><td>Hardcover</td></tr>
+							<tr><td>Tom Sawyer</td><td>Mark Twain</td><td>Paperback</td></tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<div class="rule"></div>
+	
+	<p>You have full control over SubRows.  Take advantage of the options, like in this example where I customize the speed of each subrow expansion.</p>
+	
+	<span class="code_toggle" onclick="ToggleCode(this, 'demo2_code');">Show Code</span><br />
+	<div id="demo2_code">
+		<code>
+			Javascript:<br /><br />
+			&lt;script type="text/javascript"&gt;<br />
+			
+				&nbsp;&nbsp;&nbsp;&nbsp;var speed = 200;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;$("#demo2 .item").each(function(){<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(this).SubRows({speed: speed});<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed *= 3;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+			&lt;/script&gt;
+		</code>
+	</div>
+	
+	<br />
+	<div style="text-align:center;">Inventory Sample:</div>
+	<table id="demo2" border="1" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th>Collections</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="item">
+				<td>Movies</td>
+			</tr>
+			<tr>
+				<td>
+					<table border="1" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Format</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Black Hawk Down</td><td>DVD</td></tr>
+							<tr><td>Independence Day</td><td>DVD</td></tr>
+							<tr><td>Inception</td><td>Blu Ray</td></tr>
+							<tr><td>Fight Club</td><td>DVD</td></tr>
+							<tr><td>Good Will Hunting</td><td>DVD</td></tr>
+							<tr><td>The Departed</td><td>Blu Ray</td></tr>
+							<tr><td>Avatar</td><td>Blu Ray</td></tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>Music</td>
+			</tr>		
+			<tr class="item">
+				<td>Books</td>
+			</tr>		
+			<tr>
+				<td>
+					<table border="1" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Author</th>
+								<th>Format</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>1984</td><td>George Orwell</td><td>Hardcover</td></tr>
+							<tr><td>Lord of the Flies</td><td>William Golding</td><td>Paperback</td></tr>
+							<tr><td>To Kill a Mockingbird</td><td>Harper Lee</td><td>Paperback</td></tr>
+							<tr><td>Catcher in the Rye</td><td>J.D. Salinger</td><td>Hardcover</td></tr>
+							<tr><td>Tom Sawyer</td><td>Mark Twain</td><td>Paperback</td></tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<div class="rule"></div>
+	<br />
+	
+	<div style="text-align:center;font-weight:bold;">Options</div>
+	<p class="option">
+		<span class="param">subrowClass</span> - The class name that is applied to all subrow &lt;tr&gt; elements.
+	</p>
+	<p class="option">
+		<span class="param">iconClass</span> - The class name that is applied to the &lt;span&gt; in the parent row which contains the toggle icon
+	</p>
+	<p class="option">
+		<span class="param">activeClass</span> - The class applied to the <i>iconClass</i> when it is toggled to its <strong>active</strong> state
+	</p>
+	<p class="option">
+		<span class="param">defaultClass</span> - The class applied to the <i>iconClass</i> when it is toggled to its <strong>default</strong> state
+	</p>
+	<p class="option">
+		<span class="param">emptyClass</span> - The class applied to the <i>iconClass</i> which acts as filler space.  This class is used to provide spacing 
+		consistency between rows which have subrows and those that do not.
+	</p>
+	<p class="option">
+		<span class="param">speed</span> - The speed at which the subrows expand and contract at.  It can be either "slow", "normal", "fast" or an integer value 
+		representing the speed in <i>milliseconds</i>.
+	</p>
+	<p class="option">
+		<span class="param">subRowWrapperClass</span> - The class that is applied to the &lt;div&gt; which wraps the content of the subrow row.
+	</p>
+	
+	<br /><br />
+</div>
+</body>
+</html>
