@@ -27,36 +27,36 @@ THE SOFTWARE.
         // Default Settings, can be overridden if an options map is passed in
         var settings = {
             subrowClass: 'lf_subRow'
-			,iconClass: 'lf_toggle_icon'
-			,activeClass: 'lf_active'
-			,defaultClass: 'lf_default'
-			,emptyClass: 'lf_empty'
-			,speed: 'fast'
-            ,subRowWrapperClass: 'lf_slide'
+	   ,iconClass: 'lf_toggle_icon'
+	   ,activeClass: 'lf_active'
+  	   ,defaultClass: 'lf_default'
+	   ,emptyClass: 'lf_empty'
+	   ,speed: 'fast'
+           ,subRowWrapperClass: 'lf_slide'
         };
 		
-		var parentClass = 'lf_parentRow';
+	var parentClass = 'lf_parentRow';
 		
-		var methods = {
-			 rowsChecked: false
-			,CheckRows: function(table, settings){
-				table.children("tr").map(function(){
-					if($(this).hasClass(parentClass) == false && $(this).prev("tr").hasClass(parentClass) == false){
-						if($(this).find("td:first").find(methods.jQueryClass(settings.emptyClass)).length == 0)
-							$(this).find("td:first").prepend('<span class="' + settings.iconClass + ' ' + settings.emptyClass + '"></span>');
-					}
-				});
-				methods.rowsChecked = true;
-			}
-			,jQueryClass: function(className){
-				return '.' + className;
-			}
-		};
+	var methods = {
+	    rowsChecked: false
+	   ,CheckRows: function(table, settings){
+	        table.children("tr").map(function(){
+		    if($(this).hasClass(parentClass) == false && $(this).prev("tr").hasClass(parentClass) == false){
+		        if($(this).find("td:first").find(methods.jQueryClass(settings.emptyClass)).length == 0)
+			    $(this).find("td:first").prepend('<span class="' + settings.iconClass + ' ' + settings.emptyClass + '"></span>');
+		    }
+		});
+		methods.rowsChecked = true;
+	    }
+	   ,jQueryClass: function(className){
+	        return '.' + className;
+	    }
+	};
 		
 		
-		this.addClass(parentClass);
-		var empty = this.find(methods.jQueryClass(settings.emptyClass));
-		empty.remove();
+	this.addClass(parentClass);
+	var empty = this.find(methods.jQueryClass(settings.emptyClass));
+	empty.remove();
 		
         return this.each(function () {
             var defaults = settings;
@@ -65,32 +65,32 @@ THE SOFTWARE.
 			
             var obj = $(this);
 			
-			if(!methods.rowsChecked)
-				methods.CheckRows(obj.closest("tbody"), defaults);
+	    if(!methods.rowsChecked)
+	        methods.CheckRows(obj.closest("tbody"), defaults);
 				
-			obj.find("td:first").prepend('<span class="' + defaults.iconClass + ' ' + defaults.defaultClass + '"></span>');
-			obj.next("tr").addClass(defaults.subrowClass);
-			obj.next("tr").find("td:first").wrapInner('<div class="' + defaults.subRowWrapperClass + '" />');
+	    obj.find("td:first").prepend('<span class="' + defaults.iconClass + ' ' + defaults.defaultClass + '"></span>');
+	    obj.next("tr").addClass(defaults.subrowClass);
+	    obj.next("tr").find("td:first").wrapInner('<div class="' + defaults.subRowWrapperClass + '" />');
 			
             $(this).find(methods.jQueryClass(defaults.iconClass)).bind("click", function () {
                 var isCollapsed = $(this).hasClass(defaults.defaultClass);
                 if (isCollapsed) {
-					$(this).removeClass(defaults.defaultClass);
-					$(this).addClass(defaults.activeClass);
+		    $(this).removeClass(defaults.defaultClass);
+		    $(this).addClass(defaults.activeClass);
 
                     obj.next(methods.jQueryClass(defaults.subrowClass))
-					   .css("display", "table-row")
+		       .css("display", "table-row")
                        .find(methods.jQueryClass(defaults.subRowWrapperClass))
                        .slideToggle(defaults.speed, function () { });
                 }
                 else {
                     $(this).removeClass(defaults.activeClass);
-					$(this).addClass(defaults.defaultClass);
+		    $(this).addClass(defaults.defaultClass);
 
                     obj.next(methods.jQueryClass(defaults.subrowClass))
                        .find(methods.jQueryClass(defaults.subRowWrapperClass))
                        .slideToggle(defaults.speed, function () {
-						  obj.next(methods.jQueryClass(defaults.subrowClass)).css("display", "none");
+			    obj.next(methods.jQueryClass(defaults.subrowClass)).css("display", "none");
                        });
                 }
             });
